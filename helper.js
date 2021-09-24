@@ -15,10 +15,10 @@ const invalidResponse = async () =>
 const resourceNotFound = async () =>
   new Response(JSON.stringify({ error: "Resource Not Found" }));
 const redirectTo = (path) => Response.redirect(path, 301);
-const generateShadyKey = () =>
+const generateShadyKey = (size) =>
   animals
     .sort(() => 0.5 - Math.random())
-    .slice(0, 4)
+    .slice(0, size)
     .join("_");
 
 export {

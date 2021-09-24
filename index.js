@@ -26,7 +26,7 @@ router.post("/post", async (request) => {
   if (request.headers.get("Content-Type") === "application/json") {
     let { url } = await request.json();
     let hostUrl = getHost(request.url);
-    let shadykey = generateShadyKey();
+    let shadykey = generateShadyKey(10);
     let shadyUrl = hostUrl + "/" + shadykey;
     let obj = {
       target: url,
