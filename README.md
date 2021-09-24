@@ -1,6 +1,6 @@
 # URL Longener on CF worker
 
-A fun project for Cloudflare Summer Challenge to create Shady URLs.
+A fun project for Cloudflare Summer Challenge to create Shady URLs. Go to https://shadyurls.shriji.workers.dev/ to have fun.
 
 ## POST
 
