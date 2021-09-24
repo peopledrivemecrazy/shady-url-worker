@@ -44,7 +44,7 @@ router.post("/", async (request) => {
       shadykey,
       shadyUrl,
     };
-    // await kvAdd(shadykey, url);
+    await kvAdd(shadykey, url);
     return respondWith(obj);
   } else return invalidResponse();
 });
