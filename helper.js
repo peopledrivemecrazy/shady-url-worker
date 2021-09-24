@@ -6,8 +6,8 @@ const headers = {
 
 const getHost = (url) => new URL(url);
 const getPath = (url) => new URL(url).pathname.split("/").pop();
-const kvQuery = async (query) => await SHADAYURL.get(query);
-const kvAdd = async (key, value) => await SHADAYURL.put(key, value);
+const kvQuery = async (query) => await SHADYURL.get(query);
+const kvAdd = async (key, value) => await SHADYURL.put(key, value);
 const respondWith = (result) =>
   new Response(JSON.stringify(result), { headers });
 const invalidResponse = async () =>
