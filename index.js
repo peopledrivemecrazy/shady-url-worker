@@ -26,7 +26,7 @@ router.get("/:path", async ({ url }) =>
     : redirectTo(await kvQuery(getPath(url)))
 );
 router.get("/query/:path", async ({ url }) =>
-  respondWith(await kvQuery(getPath(url)))
+  respondWith({ result: await kvQuery(getPath(url)) })
 );
 
 router.post("/", async (request) => {
