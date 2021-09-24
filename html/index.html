@@ -7,7 +7,7 @@
 
     <style>
       #debug {
-        display: hidden;
+        display: none;
       }
     </style>
   </head>
@@ -17,10 +17,12 @@
         <input type="text" name="target" placeholder="Enter your URL" />
         <button id="create">Submit</button>
         <p id="result"></p>
-        <p>
-          <strong>Debug:</strong>
-        </p>
-        <pre><code id="debug"></code></pre>
+        <div id="debug">
+          <p>
+            <strong>Debug:</strong>
+          </p>
+          <pre id="debuginfo"><code></code></pre>
+        </div>
       </form>
     </div>
     <script>
@@ -39,9 +41,9 @@
           })
             .then(async (response) => {
               let data = await response.json();
-              let debug = document.getElementById("debug");
+              let debug = document.getElementById("debuginfo");
               debug.innerText = JSON.stringify(data, null, 2);
-              debug.style.display = "block";
+              document.getElementById("debug").style.display = "block";
               let result = document.getElementById("result");
               result.innerText = "Your Shady URL: " + data.shadyUrl;
             })
