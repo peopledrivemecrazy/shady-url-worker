@@ -10,8 +10,15 @@ import {
   invalidResponse,
   resourceNotFound,
 } from "./helper";
+import html from "./html/index.html";
 
 const router = Router();
+
+router.get("/", () => {
+  return new Response(html, {
+    headers: { "Content-Type": "text/html" },
+  });
+});
 
 router.get("/:path", async ({ url }) =>
   (await kvQuery(getPath(url))) === null
@@ -22,7 +29,7 @@ router.get("/query/:path", async ({ url }) =>
   respondWith(await kvQuery(getPath(url)))
 );
 
-router.post("/post", async (request) => {
+router.post("/", async (request) => {
   if (request.headers.get("Content-Type") === "application/json") {
     let { url } = await request.json();
     let hostUrl = getHost(request.url);

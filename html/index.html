@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Shady URL Generator</title>
+
+    <style>
+      #debug {
+        display: hidden;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <form id="form">
+        <input type="text" name="target" placeholder="Enter your URL" />
+        <button id="create">Submit</button>
+        <p id="result"></p>
+        <p>
+          <strong>Debug:</strong>
+        </p>
+        <pre><code id="debug"></code></pre>
+      </form>
+    </div>
+    <script>
+      let form = document.getElementById("form");
+      let button = document.getElementById("create");
+      let target = document.getElementsByName("target")[0];
+      button.addEventListener("click", function (e) {
+        e.preventDefault();
+        if (target.value.length > 0) {
+          fetch("/", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ url: target.value }),
+          })
+            .then(async (response) => {
+              let data = await response.json();
+              let debug = document.getElementById("debug");
+              debug.innerText = JSON.stringify(data, null, 2);
+              debug.style.display = "block";
+              let result = document.getElementById("result");
+              result.innerText = "Your Shady URL: " + data.shadyUrl;
+            })
+            .catch((err) => {
+              console.error(err);
+            });
+        }
+      });
+    </script>
+  </body>
+</html>

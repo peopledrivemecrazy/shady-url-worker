@@ -9,7 +9,7 @@ const getPath = (url) => new URL(url).pathname.split("/").pop();
 const kvQuery = async (query) => await SHADAYURL.get(query);
 const kvAdd = async (key, value) => await SHADAYURL.put(key, value);
 const respondWith = (result) =>
-  new Response(JSON.stringify({ result }), { headers });
+  new Response(JSON.stringify(result), { headers });
 const invalidResponse = async () =>
   new Response(JSON.stringify({ error: "Invalid Content-Type" }));
 const resourceNotFound = async () =>

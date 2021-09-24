@@ -2,7 +2,7 @@
 
 A fun project for Cloudflare Summer Challenge to create Shady URLs.
 
-# POST
+## POST
 
 Send a post with body json request to `https://yourdomain.worker.dev/` it will respond back with a longass URL.
 
@@ -25,7 +25,7 @@ Send a post with body json request to `https://yourdomain.worker.dev/` it will r
 }
 ```
 
-# GET
+## GET
 
 Query `https://yourdomain.worker.dev/query/<verysillylongurl>` will return what the longass URL is.
 
@@ -37,3 +37,9 @@ Query `https://yourdomain.worker.dev/query/<verysillylongurl>` will return what 
 ```
 
 Go to `https://yourdomain.worker.dev/<verysillylongurl>` will redirect to target URL.
+
+
+## Note
+
+- URLs may collide, there isn't a mechanism for detecting collisions.
+- As of now this uses animals from `animals.json` chooses 10 animals seperated by `_`.
