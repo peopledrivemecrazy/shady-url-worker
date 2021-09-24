@@ -23,7 +23,7 @@ Send a post with body json request to `https://yourdomain.worker.dev/` it will r
 ```
 ### Sample Response 
 
-```
+```json
 {
   "result": {
     "target": "https://github.com",
